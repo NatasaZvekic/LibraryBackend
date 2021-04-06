@@ -1,0 +1,17 @@
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Repositories\bin\Debug\netcoreapp3.1\Library.Repositories.deps.json
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Repositories\bin\Debug\netcoreapp3.1\Library.Repositories.dll
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Repositories\bin\Debug\netcoreapp3.1\Library.Repositories.pdb
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Repositories\bin\Debug\netcoreapp3.1\Library.RepositoryContract.dll
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Repositories\bin\Debug\netcoreapp3.1\Library.ServiceContract.dll
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Repositories\bin\Debug\netcoreapp3.1\Library.RepositoryContract.pdb
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Repositories\bin\Debug\netcoreapp3.1\Library.ServiceContract.pdb
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Repositories\obj\Debug\netcoreapp3.1\Library.Repositories.csprojAssemblyReference.cache
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Repositories\obj\Debug\netcoreapp3.1\Library.Repositories.AssemblyInfoInputs.cache
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Repositories\obj\Debug\netcoreapp3.1\Library.Repositories.AssemblyInfo.cs
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Repositories\obj\Debug\netcoreapp3.1\Library.Repositories.csproj.CopyComplete
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Repositories\obj\Debug\netcoreapp3.1\Library.Repositories.dll
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Repositories\obj\Debug\netcoreapp3.1\Library.Repositories.pdb
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Repositories\bin\Debug\netcoreapp3.1\Library.Repositories.runtimeconfig.json
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Repositories\bin\Debug\netcoreapp3.1\Library.Repositories.runtimeconfig.dev.json
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Repositories\obj\Debug\netcoreapp3.1\Library.Repositories.genruntimeconfig.cache
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Repositories\obj\Debug\netcoreapp3.1\Library.Repositories.csproj.CoreCompileInputs.cache

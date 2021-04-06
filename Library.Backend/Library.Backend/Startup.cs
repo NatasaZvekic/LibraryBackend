@@ -2,6 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Library.Repositories;
+using Library.Repositories.Repositories;
+using Library.RepositoryContract.Interfaces;
+using Library.ServiceContract.Interfaces;
+using Library.Services.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +31,13 @@ namespace Library.Backend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+
+            services.AddDbContext<ContextDB>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

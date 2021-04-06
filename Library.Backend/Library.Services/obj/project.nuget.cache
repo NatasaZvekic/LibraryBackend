@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "iQGt/mhogF9d/B2q9venDD4ylVNrOK1Z6BUKmQrKt4ZKKiiJ4OOupwS2eoIexMh579FP5FI0NPLcErug2rDhTA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Hp\\Desktop\\Faks\\ERP\\Backend_ERP\\Library.Backend\\Library.Services\\Library.Services.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Hp\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\automapper.extensions\\2.1.0\\automapper.extensions.2.1.0.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.0.0\\microsoft.extensions.dependencyinjection.abstractions.3.0.0.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\microsoft.extensions.options\\3.0.0\\microsoft.extensions.options.3.0.0.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\microsoft.extensions.primitives\\3.0.0\\microsoft.extensions.primitives.3.0.0.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

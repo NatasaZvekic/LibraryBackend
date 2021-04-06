@@ -1,0 +1,14 @@
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Services\bin\Debug\netcoreapp3.1\Library.Services.deps.json
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Services\bin\Debug\netcoreapp3.1\Library.Services.dll
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Services\bin\Debug\netcoreapp3.1\Library.Services.pdb
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Services\bin\Debug\netcoreapp3.1\Library.ServiceContract.dll
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Services\bin\Debug\netcoreapp3.1\Library.ServiceContract.pdb
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Services\obj\Debug\netcoreapp3.1\Library.Services.csprojAssemblyReference.cache
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Services\obj\Debug\netcoreapp3.1\Library.Services.AssemblyInfoInputs.cache
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Services\obj\Debug\netcoreapp3.1\Library.Services.AssemblyInfo.cs
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Services\obj\Debug\netcoreapp3.1\Library.Services.csproj.CopyComplete
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Services\obj\Debug\netcoreapp3.1\Library.Services.dll
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Services\obj\Debug\netcoreapp3.1\Library.Services.pdb
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Services\bin\Debug\netcoreapp3.1\Library.RepositoryContract.dll
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Services\bin\Debug\netcoreapp3.1\Library.RepositoryContract.pdb
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Services\obj\Debug\netcoreapp3.1\Library.Services.csproj.CoreCompileInputs.cache
