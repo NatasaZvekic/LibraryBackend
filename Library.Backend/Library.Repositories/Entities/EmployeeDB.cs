@@ -8,7 +8,7 @@ namespace Library.Repositories.Entities
     public class EmployeeDB
     {
         [Key]
-        public int EmployeeID { get; set; }
+        public Guid EmployeeID { get; set; }
         public String EmployeeName { get; set; }
         public String EmployeeLastName { get; set; }
         public int EmployeeContact { get; set; }

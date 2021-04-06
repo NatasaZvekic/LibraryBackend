@@ -8,5 +8,13 @@ namespace Library.RepositoryContract.Interfaces
     public interface IEmployeeRepository
     {
         List<Employee> GetAllEmployees();
+
+        Employee GetEmployeeByID(Guid employeeID);
+
+        Guid AddNewEmployee(Employee employee);
+
+        void UpdateEmployee(Employee employee, Guid employeeID);
+
+        bool DeleteEmployee(Guid employeeID);
     }
 }

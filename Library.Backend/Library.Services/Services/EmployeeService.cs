@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Library.RepositoryContract.Entities;
 using Library.RepositoryContract.Interfaces;
+using Library.ServiceContract.DTOs.CreateDTO;
 using Library.ServiceContract.DTOs.ReadDTO;
+using Library.ServiceContract.DTOs.UpdateDTO;
 using Library.ServiceContract.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -25,5 +27,28 @@ namespace Library.Services.Services
         {
             return mapper.Map<List<EmployeeReadDTO>>(repository.GetAllEmployees());
         }
+
+        public EmployeeReadDTO GetEmployeeByID(Guid employeeID)
+        {
+            return mapper.Map<EmployeeReadDTO>(repository.GetEmployeeByID(employeeID));
+        }
+
+        public Guid AddNewEmployee(EmployeeCreateDTO employee)
+        {
+            return repository.AddNewEmployee(mapper.Map<Employee>(employee));
+        }
+
+        public void UpdateEmployee(EmployeeUpdateDTO employee, Guid empployeeID)
+        {
+            var employee_repos = mapper.Map<Employee>(employee);
+            repository.UpdateEmployee(employee_repos, empployeeID);
+        }
+
+        public bool DeleteEmployee(Guid employeeID)
+        {
+            return repository.DeleteEmployee(employeeID);
+        }
+
+      
     }
 }

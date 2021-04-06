@@ -13,6 +13,7 @@ namespace Library.Repositories.Profiles
         {
             CreateMap<Employee, EmployeeDB>();
             CreateMap<EmployeeDB, Employee>();
+            CreateMap<Employee, Employee>();
         }
     }
 }
