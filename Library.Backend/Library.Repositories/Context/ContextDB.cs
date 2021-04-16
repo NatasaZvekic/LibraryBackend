@@ -18,6 +18,14 @@ namespace Library.Repositories
         }
 
         public DbSet<EmployeeDB> Employee { get; set; }
+        public DbSet<UserDB> Users { get; set; }
+        public DbSet<BookDB> Books { get; set; }
+        public DbSet<DelivererDB> DeliveryCompany { get; set; }
+        public DbSet<GenreDB> Genre { get; set; }
+        public DbSet<AuthorDB> Author { get; set; }
+        public DbSet<SupplierDB> Suppliers { get; set; }
+        public DbSet<RentalDB> Rentals{ get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

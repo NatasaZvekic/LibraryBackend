@@ -30,14 +30,42 @@ namespace Library.Backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("cors",
+                        builder =>
+                        {
+                           builder.WithOrigins("*")
+                           .AllowAnyHeader()
+                            .AllowAnyMethod();
+                        });
+            });
+
             services.AddControllers();
 
             services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IBookService,  BookService>();
+            services.AddScoped<IDelivererService, DelivererService>();
+            services.AddScoped<IGenreService, GenreService>();
+            services.AddScoped<IAuthorService, AuthorService>();
+            services.AddScoped<ISupplierService, SupplierService>();
+            services.AddScoped<IRentalService, RentalService>();
+
+
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<IDelivererRepository, DelivererRepository>();
+            services.AddScoped<IGenreRepository, GenreRepository>();
+            services.AddScoped<IAuthorRepository, AuthorRepository>();
+            services.AddScoped<ISupplierRepository, SupplierRepository>();
+            services.AddScoped<IRentalRepository, RentalRepository>();
+
+
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
-
             services.AddDbContext<ContextDB>();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +79,7 @@ namespace Library.Backend
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors("cors");
 
             app.UseAuthorization();
 
