@@ -44,5 +44,10 @@ namespace Library.Services.Services
         {
             return userRepository.DeleteUser(userID);
         }
+
+        public String UserWithCredentialsExists(string email, string password)
+        {
+            return userRepository.UserWithCredentialsExists(email, password);
+        }
     }
 }

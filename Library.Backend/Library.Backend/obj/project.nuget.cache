@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "O4cyY3m9vpdiRf4AuzHZM6FjVYAZNXsRXoRp5V8K3IjzZ6gNxuCOUIAjSa9vYTnF1cHD+n2EkRGdAcfJFoFvDw==",
+  "dgSpecHash": "l/b8MxHSRtXbmyT5SnvaxY+NrmCR10U+ElfJRhEZ7rejb+1RHpceLimZgeH1GxlLSr1sMC3RupaJuQaXv5iOjA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Hp\\Desktop\\Faks\\ERP\\Backend_ERP\\Library.Backend\\Library.Backend\\Library.Backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Hp\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\automapper.extensions\\2.1.0\\automapper.extensions.2.1.0.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.0.2\\microsoft.aspnetcore.authentication.jwtbearer.3.0.2.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",

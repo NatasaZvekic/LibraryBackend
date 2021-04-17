@@ -7,11 +7,13 @@ using System.Collections.Generic;
 using Library.ServiceContract.DTOs.CreateDTO;
 using Library.ServiceContract.DTOs.ReadDTO;
 using Library.ServiceContract.DTOs.UpdateDTO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Library.Backend.Controllers
 {
     [ApiController]
     [Route("/suppliers")]
+    [Authorize(Roles = "admin")]
     public class SupplierController : ControllerBase
     {
         private readonly ISupplierService supplierService;

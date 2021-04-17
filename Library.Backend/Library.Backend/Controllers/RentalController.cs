@@ -2,6 +2,7 @@
 using Library.ServiceContract.DTOs.ReadDTO;
 using Library.ServiceContract.DTOs.UpdateDTO;
 using Library.ServiceContract.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using System;
@@ -23,6 +24,7 @@ namespace Library.Backend.Controllers
             this.linkGenerator = linkGenerator;
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet]
         public ActionResult<List<RentalReadDTO>> GetAllRentals()
         {
@@ -34,6 +36,7 @@ namespace Library.Backend.Controllers
             return Ok(rentals);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet("{rentalID}")]
         public ActionResult GetRentalByID(Guid rentalID)
         {
@@ -45,6 +48,7 @@ namespace Library.Backend.Controllers
             return Ok(rental);
         }
 
+        [Authorize(Roles = "user")]
         [HttpPost]
         public ActionResult AddNewRental(RentalCreateDTO rental)
         {
@@ -54,6 +58,7 @@ namespace Library.Backend.Controllers
             return Created(location, guid);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPut("{rentalID}")]
         public IActionResult UpdateRental(RentalUpdateDTO rental, Guid rentalID)
         {
@@ -71,6 +76,7 @@ namespace Library.Backend.Controllers
 
 
         [HttpDelete("{retalID}")]
+        [Authorize(Roles = "admin, user")]
         public IActionResult DeleteRental(Guid retalID)
         {
             bool deleted = rentalsService.DeleteRental(retalID);

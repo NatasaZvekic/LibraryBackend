@@ -2,6 +2,7 @@
 using Library.ServiceContract.DTOs.ReadDTO;
 using Library.ServiceContract.DTOs.UpdateDTO;
 using Library.ServiceContract.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
@@ -12,9 +13,9 @@ using System.Threading.Tasks;
 
 namespace Library.Backend.Controllers
 {
+
     [ApiController]
     [Route("books")]
-    
     public class BookController : ControllerBase
     {
         private readonly IBookService bookService;
@@ -48,6 +49,7 @@ namespace Library.Backend.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public IActionResult AddNewBook(BookCreateDTO book)
         {
             var guid = bookService.AddNewBook(book);
@@ -57,6 +59,7 @@ namespace Library.Backend.Controllers
         }
 
         [HttpPut("{bookID}")]
+        [Authorize(Roles = "admin")]
         public IActionResult UpdateBook(BookUpdateDTO book, Guid bookID)
         {
             try
@@ -72,6 +75,7 @@ namespace Library.Backend.Controllers
         }
 
         [HttpDelete("{bookID}")]
+        [Authorize(Roles = "admin")]
         public IActionResult DeleteBook(Guid bookID)
         {
             bool deleted = bookService.DeleteBook(bookID);

@@ -2,6 +2,7 @@
 using Library.ServiceContract.DTOs.ReadDTO;
 using Library.ServiceContract.DTOs.UpdateDTO;
 using Library.ServiceContract.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using System;
@@ -13,6 +14,7 @@ namespace Library.Backend.Controllers
 {
     [ApiController]
     [Route("employees")]
+   // [Authorize(Roles = "admin")]
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeService service;

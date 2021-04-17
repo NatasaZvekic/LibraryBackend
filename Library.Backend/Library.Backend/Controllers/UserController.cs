@@ -2,6 +2,7 @@
 using Library.ServiceContract.DTOs.ReadDTO;
 using Library.ServiceContract.DTOs.UpdateDTO;
 using Library.ServiceContract.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using System;
@@ -24,6 +25,7 @@ namespace Library.Backend.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public ActionResult <List<UserReadDTO>> GetAllUsers()
         {
             var users = userService.GetAllUsers();
@@ -35,6 +37,7 @@ namespace Library.Backend.Controllers
         }
 
         [HttpGet("{userID}")]
+        [Authorize(Roles = "admin")]
         public ActionResult GetUserByID(Guid userID)
         {
             var user = userService.GetUserByID(userID);
@@ -55,6 +58,7 @@ namespace Library.Backend.Controllers
         }
 
         [HttpPut("{userID}")]
+        [Authorize(Roles = "admin, user")]
         public IActionResult UpdateUser(UserUpdateDTO user, Guid userID)
         {
             try
@@ -71,6 +75,7 @@ namespace Library.Backend.Controllers
 
 
         [HttpDelete("{userID}")]
+        [Authorize(Roles = "admin, user")]
         public IActionResult DeleteUser(Guid userID)
         {
             bool deleted = userService.DeleteUser(userID);

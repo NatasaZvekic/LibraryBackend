@@ -15,5 +15,7 @@ namespace Library.RepositoryContract.Entities
         public int UserContact { get; set; }
         public String Email { get; set; }
         public String Password { get; set; }
+        public String Role { get; set; }
+
     }
 }

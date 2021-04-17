@@ -5,6 +5,7 @@ using Library.RepositoryContract.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace Library.Repositories.Repositories
@@ -13,6 +14,7 @@ namespace Library.Repositories.Repositories
     {
         private readonly ContextDB context;
         private readonly IMapper mapper;
+        private readonly static int iterations = 1000;
 
         public UserRepository(ContextDB context, IMapper mapper)
         {
@@ -34,8 +36,13 @@ namespace Library.Repositories.Repositories
         public Guid AddNewUser(User user)
         {
             var newUser = mapper.Map<UserDB>(user);
+
             var guid = Guid.NewGuid();
             newUser.UserID = guid;
+
+            var pass = HashPassword(user.Password);
+            newUser.Salt = pass.Item2;
+            newUser.Password = pass.Item1;
 
             context.Users.Add(newUser);
             context.SaveChanges();
@@ -72,6 +79,51 @@ namespace Library.Repositories.Repositories
             context.Users.Remove(user);
             context.SaveChanges();
             return true;
+        }
+
+       
+        public String UserWithCredentialsExists(string username, string password)
+        {
+            UserDB user = context.Users.FirstOrDefault(u => u.Email == username);
+            //var password_hash = HashPassword(user.Password);
+            PrincipalDB principal = new PrincipalDB
+            {
+                Email = user.Email,
+                Password = user.Password,
+                Salt = user.Salt,
+                Role = user.Role
+            };
+
+            if (principal == null || !VerifyPassword(password, principal.Password, principal.Salt))
+            {
+                throw new Exception("not found");
+            }
+            return principal.Role;
+        }
+        private Tuple<string, string> HashPassword(string password)
+        {
+            var sBytes = new byte[password.Length];
+            new RNGCryptoServiceProvider().GetNonZeroBytes(sBytes);
+            var salt = Convert.ToBase64String(sBytes);
+
+            var derivedBytes = new Rfc2898DeriveBytes(password, sBytes, iterations);
+
+            return new Tuple<string, string>
+            (
+                Convert.ToBase64String(derivedBytes.GetBytes(256)),
+                salt
+            );
+        }
+
+        public bool VerifyPassword(string password, string savedHash, string savedSalt)
+        {
+            var saltBytes = Convert.FromBase64String(savedSalt);
+            var rfc2898DeriveBytes = new Rfc2898DeriveBytes(password, saltBytes, iterations);
+            if (Convert.ToBase64String(rfc2898DeriveBytes.GetBytes(256)) == savedHash)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

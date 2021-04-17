@@ -10,11 +10,13 @@ using Library.ServiceContract.DTOs.ReadDTO;
 using Library.ServiceContract.DTOs.UpdateDTO;
 using Library.ServiceContract.Interfaces;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Library.Backend.Controllers
 {
     [ApiController]
     [Route("/authors")]
+    [Authorize(Roles = "admin")]
     public class AuthorController : ControllerBase
     {
         private readonly IAuthorService authorService;
