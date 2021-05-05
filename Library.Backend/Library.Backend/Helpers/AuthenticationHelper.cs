@@ -27,17 +27,11 @@ namespace Library.Backend.Helpers
             try
             {
                 var role = userService.UserWithCredentialsExists(principal.Email, principal.Password);
-                //if (user == null )
-                //{
-                //    throw new Exception("not found");
-
-                //}
-
                 return role;
             }
             catch (Exception)
             {
-                return null;
+                throw new Exception("not found");
             }
         }
 

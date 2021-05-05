@@ -48,7 +48,7 @@ namespace Library.Backend.Controllers
             return Ok(rental);
         }
 
-        [Authorize(Roles = "user")]
+        [Authorize(Roles = "admin, user")]
         [HttpPost]
         public ActionResult AddNewRental(RentalCreateDTO rental)
         {

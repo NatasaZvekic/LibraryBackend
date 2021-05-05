@@ -13,6 +13,8 @@ namespace Library.Repositories.Profiles
         {
             CreateMap<Book, BookDB>();
             CreateMap<BookDB, Book>();
+            CreateMap<Book, BookWithAuthor>();
+            CreateMap<BookWithAuthor, Book>();
         }
     }
 }

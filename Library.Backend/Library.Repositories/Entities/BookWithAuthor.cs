@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Library.RepositoryContract.Entities
+namespace Library.Repositories.Entities
 {
-    public class Book
+    public class BookWithAuthor
     {
 		[Key]
 		public Guid BookID { get; set; }
@@ -16,8 +16,8 @@ namespace Library.RepositoryContract.Entities
 		public Guid GenreID { get; set; }
 		public Guid SupllierID { get; set; }
 		public String Url { get; set; }
+
 		public String AuthorName { get; set; }
 		public String AuthorLastName { get; set; }
-		public int YearOfBirth { get; set; }
 	}
 }

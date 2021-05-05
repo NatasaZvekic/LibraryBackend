@@ -12,5 +12,6 @@ namespace Library.ServiceContract.DTOs.UpdateDTO
 		public int Available { get; set; }
 		public Guid GenreID { get; set; }
 		public Guid SupllierID { get; set; }
+		public String Url { get; set; }
 	}
 }

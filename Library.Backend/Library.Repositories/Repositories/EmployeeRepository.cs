@@ -5,6 +5,7 @@ using Library.RepositoryContract.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace Library.Repositories.Repositories
@@ -13,7 +14,7 @@ namespace Library.Repositories.Repositories
     {
         private readonly ContextDB context;
         private readonly IMapper mapper;
-
+        private readonly static int iterations = 1000;
         public EmployeeRepository(ContextDB context, IMapper mapper)
         {
             this.context = context;
@@ -36,6 +37,10 @@ namespace Library.Repositories.Repositories
             var employeeDB = mapper.Map<EmployeeDB>(employee);
             Guid employeeID = Guid.NewGuid();
             employeeDB.EmployeeID = employeeID;
+
+            var pass = HashPassword(employee.Password);
+            employeeDB.Salt = pass.Item2;
+            employeeDB.Password = pass.Item1;
 
             context.Employee.Add(employeeDB);
             context.SaveChanges();
@@ -71,6 +76,21 @@ namespace Library.Repositories.Repositories
             context.Employee.Remove(employee);
             context.SaveChanges();
             return true;
+        }
+
+        private Tuple<string, string> HashPassword(string password)
+        {
+            var sBytes = new byte[password.Length];
+            new RNGCryptoServiceProvider().GetNonZeroBytes(sBytes);
+            var salt = Convert.ToBase64String(sBytes);
+
+            var derivedBytes = new Rfc2898DeriveBytes(password, sBytes, iterations);
+
+            return new Tuple<string, string>
+            (
+                Convert.ToBase64String(derivedBytes.GetBytes(256)),
+                salt
+            );
         }
 
     }

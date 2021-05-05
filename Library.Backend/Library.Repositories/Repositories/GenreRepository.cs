@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 
 namespace Library.Repositories.Repositories
 {
@@ -25,7 +27,10 @@ namespace Library.Repositories.Repositories
         }
 
         public Genre GetGenreByID(Guid genreID)
-        {
+        { 
+
+           // var name = new SqlParameter("@Name", "Drama");
+            //var genre = context.Genre.FromSqlRaw("select * from Genre where GenreName=@Name", name).FirstOrDefault();
             var genre = context.Genre.FirstOrDefault(e => e.GenreID == genreID);
             return mapper.Map<Genre>(genre);
         }

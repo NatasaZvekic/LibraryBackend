@@ -2,10 +2,14 @@
 using Library.Repositories.Entities;
 using Library.RepositoryContract.Entities;
 using Library.RepositoryContract.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.Common;
+using System.Data;
 
 namespace Library.Repositories.Repositories
 {
@@ -19,19 +23,16 @@ namespace Library.Repositories.Repositories
             this.context = context;
             this.mapper = mapper;
         }
-
-        public List<Book> GetAllBooks(int pageNumber, String bookName = null)
+       
+        public List<Book> GetAllBooks( String bookName = null)
         {
 
-            if (pageNumber == 0) { pageNumber = 1; }
+            List<BookWithAuthor> result =  RawSqlQuery("SELECT BookID, BookName, PublishYear, Url, Available, AuthorName, AuthorLastName, SupllierID, GenreID, a.AuthorID FROM Books b"
+                    + " INNER JOIN Author a on a.AuthorID = b.AuthorID",
+                    x => new BookWithAuthor { BookID= (Guid)x[0], BookName = (string)x[1], PublishYear = (int)x[2], Url = (String)x[3], Available = (int)x[4] , AuthorName = (String)x[5] ,
+                        AuthorLastName = (String)x[6], SupllierID = (Guid)x[7], GenreID = (Guid)x[8], AuthorID = (Guid)x[9] });
 
-            if (bookName == null)
-            {
-                return mapper.Map<List<Book>>(context.Books.Skip(5 * (pageNumber - 1)).Take(5).Where(e => string.IsNullOrEmpty(bookName) || e.BookName.Contains(bookName)));
-            }
-            else
-                return mapper.Map<List<Book>>(context.Books.Where(e => e.BookName.Contains(bookName)));
-
+             return mapper.Map<List<Book>>(result.Where(e => string.IsNullOrEmpty(bookName) || e.BookName.Contains(bookName)));
         }
         public Book GetBookByID(Guid bookID)
         {
@@ -66,6 +67,7 @@ namespace Library.Repositories.Repositories
             oldBook.GenreID = book.GenreID;
             oldBook.PublishYear = book.PublishYear;
             oldBook.SupllierID = book.SupllierID;
+            oldBook.Url = book.Url;
 
             context.SaveChanges();
         }
@@ -83,6 +85,28 @@ namespace Library.Repositories.Repositories
             return true;
         }
 
+         public  List<T> RawSqlQuery<T>(string query, Func<DbDataReader, T> map)
+         {
+            using (var command = context.Database.GetDbConnection().CreateCommand())
+            {
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+
+                context.Database.OpenConnection();
+
+                using (var result = command.ExecuteReader())
+                {
+                    var entities = new List<T>();
+
+                    while (result.Read())
+                    {
+                        entities.Add(map(result));
+                    }
+
+                    return entities;
+                }
+            }
+         }
        
     }
 }

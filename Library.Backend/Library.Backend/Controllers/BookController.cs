@@ -29,12 +29,18 @@ namespace Library.Backend.Controllers
         [HttpGet]
         public ActionResult<List<BookReadDTO>> GetAllBooks(int pageNumber, String bookName)
         {
-            var books = bookService.GetAllBooks(pageNumber, bookName);
+
+            var books = bookService.GetAllBooks(bookName);
+            if (bookName != null) { pageNumber = 0; }
+            
+            var content = new { BooksList = books.Skip(5 * (pageNumber - 1)).Take(5), NumberOfPages = (int)Math.Round((Decimal)books.Count / 5, 0, MidpointRounding.ToPositiveInfinity) };
+           
+
             if (books == null)
             {
                 return NoContent();
             }
-            return Ok(books);
+            return Ok(content);
         }
 
         [HttpGet("{bookID}")]

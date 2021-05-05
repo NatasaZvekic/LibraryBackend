@@ -21,9 +21,9 @@ namespace Library.Services.Services
             this.mapper = mapper;
             this.bookRepository = bookRepository;
         }
-        public List<BookReadDTO> GetAllBooks(int pageNumber, String bookName)
+        public List<BookReadDTO> GetAllBooks( String bookName)
         {
-            return mapper.Map<List<BookReadDTO>>(bookRepository.GetAllBooks(pageNumber, bookName));
+            return mapper.Map<List<BookReadDTO>>(bookRepository.GetAllBooks( bookName));
         }
 
         public BookReadDTO GetBookByID(Guid bookID)

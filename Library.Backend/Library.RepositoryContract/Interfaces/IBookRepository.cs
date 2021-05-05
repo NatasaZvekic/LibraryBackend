@@ -8,7 +8,8 @@ namespace Library.RepositoryContract.Interfaces
 {
     public interface IBookRepository
     {
-        List<Book> GetAllBooks(int pageNumber, String bookName);
+
+        List<Book> GetAllBooks( String bookName);
         Book GetBookByID(Guid bookID);
         Guid AddNewBook(Book book);
         void UpdateBook(Book book, Guid bookID);

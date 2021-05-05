@@ -10,11 +10,6 @@ namespace Library.Backend.Controllers
 {
 
     [ApiController]
-    [Route("books")]
-    [Route("authors")]
-    [Route("deliverers")]
-    [Route("suplliers")]
-    [Route("rentals")]
     public class AuthenticationController : ControllerBase
     {
         private readonly IAuthenticationHelper authenticationHelper;
@@ -27,15 +22,17 @@ namespace Library.Backend.Controllers
         [HttpPost("authenticate")]
         public IActionResult Authenticate(PrincipalCreateDTO principal)
         {
-            var role = authenticationHelper.AuthenticatePrincipal(principal);
-            if ( role != null )
+            try
             {
+                var role = authenticationHelper.AuthenticatePrincipal(principal);
+              
                 principal.Role = role;
                 var tokenString = authenticationHelper.GenerateJwt(principal);
-                return Ok(new { token = tokenString });
+                return Ok(new { token = tokenString, role = principal.Role });
             }
-            
-            return Unauthorized();
+            catch{
+                return Unauthorized(); 
+            }
         }
 
     }

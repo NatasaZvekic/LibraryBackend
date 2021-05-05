@@ -14,7 +14,7 @@ namespace Library.Backend.Controllers
 {
     [ApiController]
     [Route("employees")]
-   // [Authorize(Roles = "admin")]
+    [Authorize(Roles = "admin")]
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeService service;

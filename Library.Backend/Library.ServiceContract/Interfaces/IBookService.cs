@@ -9,7 +9,7 @@ namespace Library.ServiceContract.Interfaces
 {
     public interface IBookService
     {
-        List<BookReadDTO> GetAllBooks(int pageNumber, String bookName);
+        List<BookReadDTO> GetAllBooks(String bookName);
         BookReadDTO GetBookByID(Guid bookID);
         Guid AddNewBook(BookCreateDTO book);
         void UpdateBook(BookUpdateDTO book, Guid bookID);

@@ -82,10 +82,32 @@ namespace Library.Repositories.Repositories
         }
 
        
-        public String UserWithCredentialsExists(string username, string password)
+        public String UserWithCredentialsExists(string email, string password)
         {
-            UserDB user = context.Users.FirstOrDefault(u => u.Email == username);
-            //var password_hash = HashPassword(user.Password);
+            var user = context.Users.FirstOrDefault(u => u.Email == email);
+            if (user == null)
+            {
+                var employee = context.Employee.FirstOrDefault(e => e.Email == email);
+                if(employee == null)
+                {
+                    throw new Exception("not found");
+                }
+                PrincipalDB principal1 = new PrincipalDB
+                {
+                    Email = employee.Email,
+                    Password = employee.Password,
+                    Salt = employee.Salt,
+                    Role = employee.Role
+                };
+                if (!VerifyPassword(password, principal1.Password, principal1.Salt))
+                {
+                    throw new Exception("not found");
+                }
+                return principal1.Role;
+               
+            }
+            
+
             PrincipalDB principal = new PrincipalDB
             {
                 Email = user.Email,
@@ -93,12 +115,14 @@ namespace Library.Repositories.Repositories
                 Salt = user.Salt,
                 Role = user.Role
             };
-
-            if (principal == null || !VerifyPassword(password, principal.Password, principal.Salt))
+            if (!VerifyPassword(password, principal.Password, principal.Salt))
             {
                 throw new Exception("not found");
             }
             return principal.Role;
+           
+
+            
         }
         private Tuple<string, string> HashPassword(string password)
         {

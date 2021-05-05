@@ -69,6 +69,6 @@ C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Backend\bin\Deb
 C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Backend\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Backend\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.dll
 C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Backend\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Backend\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Backend\obj\Debug\netcoreapp3.1\Library.Backend.csproj.CoreCompileInputs.cache
 C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Backend\obj\Debug\netcoreapp3.1\Library.Backend.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.Backend\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
