@@ -10,8 +10,8 @@ namespace Library.ServiceContract.Interfaces
     public interface IRentalService
     {
 
-        List<RentalReadDTO> GetAllRentals();
-        RentalReadDTO GetRentalByID(Guid rentalID);
+        List<RentalReadDTO> GetAllRentals(Boolean completed);
+        List<RentalReadDTO> GetRentalByID(Guid rentalID);
         Guid AddNewRental(RentalCreateDTO rental);
         void UpdateRental(RentalUpdateDTO rental, Guid rentalID);
         bool DeleteRental(Guid rentalID);

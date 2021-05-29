@@ -14,5 +14,9 @@ namespace Library.ServiceContract.DTOs.ReadDTO
 		public Guid UserID { get; set; }
 		public Guid EmployeeID { get; set; }
 		public Guid DeliveryID { get; set; }
+		public String BookName { get; set; }
+		public String UserName { get; set; }
+		public String EmployeeName { get; set; }
+		public String DeliveryCompanyName { get; set; }
 	}
 }

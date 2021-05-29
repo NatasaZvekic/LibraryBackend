@@ -45,9 +45,9 @@ namespace Library.Services.Services
             return userRepository.DeleteUser(userID);
         }
 
-        public String UserWithCredentialsExists(string email, string password)
+        public PrincipalReadDTO UserWithCredentialsExists(string email, string password)
         {
-            return userRepository.UserWithCredentialsExists(email, password);
+            return mapper.Map<PrincipalReadDTO>(userRepository.UserWithCredentialsExists(email, password));
         }
     }
 }

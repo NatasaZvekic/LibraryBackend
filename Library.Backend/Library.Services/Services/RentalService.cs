@@ -22,14 +22,14 @@ namespace Library.Services.Services
             this.mapper = mapper;
         }
 
-        public List<RentalReadDTO> GetAllRentals()
+        public List<RentalReadDTO> GetAllRentals(Boolean completed)
         {
-            return mapper.Map<List<RentalReadDTO>>(rentalsRepository.GetAllRentals());
+            return mapper.Map<List<RentalReadDTO>>(rentalsRepository.GetAllRentals( completed));
         }
 
-        public RentalReadDTO GetRentalByID(Guid rentalID)
+        public List<RentalReadDTO> GetRentalByID(Guid rentalID)
         {
-            return mapper.Map<RentalReadDTO>(rentalsRepository.GetRentalByID(rentalID));
+            return mapper.Map<List<RentalReadDTO>>(rentalsRepository.GetRentalByID(rentalID));
         }
 
         public Guid AddNewRental(RentalCreateDTO rental)

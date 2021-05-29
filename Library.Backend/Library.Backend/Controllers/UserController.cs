@@ -51,10 +51,17 @@ namespace Library.Backend.Controllers
         [HttpPost]
         public ActionResult AddNewUser(UserCreateDTO user)
         {
-            var guid = userService.AddNewUser(user);
+            try
+            {
+                var guid = userService.AddNewUser(user);
 
-            string location = linkGenerator.GetPathByAction("GetUserByID", "User", new { userID = guid });
-            return Created(location, guid);
+                string location = linkGenerator.GetPathByAction("GetUserByID", "User", new { userID = guid });
+                return Created(location, guid);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest();
+            }
         }
 
         [HttpPut("{userID}")]

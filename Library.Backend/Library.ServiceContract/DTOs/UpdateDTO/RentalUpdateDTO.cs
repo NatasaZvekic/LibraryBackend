@@ -12,5 +12,6 @@ namespace Library.ServiceContract.DTOs.UpdateDTO
 		public Guid UserID { get; set; }
 		public Guid EmployeeID { get; set; }
 		public Guid DeliveryID { get; set; }
+		public Guid SupllierID { get; set; }
 	}
 }

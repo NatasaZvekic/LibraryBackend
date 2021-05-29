@@ -35,19 +35,22 @@ namespace Library.Repositories.Repositories
 
         public Guid AddNewUser(User user)
         {
-            var newUser = mapper.Map<UserDB>(user);
+            
+                var newUser = mapper.Map<UserDB>(user);
 
-            var guid = Guid.NewGuid();
-            newUser.UserID = guid;
+                var guid = Guid.NewGuid();
+                newUser.UserID = guid;
+                newUser.Role = "user";
+                var pass = HashPassword(user.Password);
+                newUser.Salt = pass.Item2;
+                newUser.Password = pass.Item1;
 
-            var pass = HashPassword(user.Password);
-            newUser.Salt = pass.Item2;
-            newUser.Password = pass.Item1;
+                context.Users.Add(newUser);
+                context.SaveChanges();
 
-            context.Users.Add(newUser);
-            context.SaveChanges();
-
-            return guid;
+                return guid;
+           
+           
 
         }
 
@@ -63,6 +66,8 @@ namespace Library.Repositories.Repositories
             oldUser.UserName = user.UserName;
             oldUser.UserLastName = user.UserLastName;
             oldUser.UserAddress = user.UserAddress;
+            oldUser.Email= user.Email;
+            oldUser.Role = user.Role;
             oldUser.UserContact = user.UserContact;
 
             context.SaveChanges();
@@ -82,13 +87,13 @@ namespace Library.Repositories.Repositories
         }
 
        
-        public String UserWithCredentialsExists(string email, string password)
+        public Principal UserWithCredentialsExists(string email, string password)
         {
             var user = context.Users.FirstOrDefault(u => u.Email == email);
             if (user == null)
             {
                 var employee = context.Employee.FirstOrDefault(e => e.Email == email);
-                if(employee == null)
+                if (employee == null)
                 {
                     throw new Exception("not found");
                 }
@@ -97,13 +102,17 @@ namespace Library.Repositories.Repositories
                     Email = employee.Email,
                     Password = employee.Password,
                     Salt = employee.Salt,
-                    Role = employee.Role
+                    Role = employee.Role,
+                    UserID = employee.EmployeeID,
+                    UserName = employee.EmployeeName,
+                    UserLastName = employee.EmployeeLastName
+
                 };
                 if (!VerifyPassword(password, principal1.Password, principal1.Salt))
                 {
                     throw new Exception("not found");
                 }
-                return principal1.Role;
+                return mapper.Map<Principal>(principal1);
                
             }
             
@@ -113,16 +122,19 @@ namespace Library.Repositories.Repositories
                 Email = user.Email,
                 Password = user.Password,
                 Salt = user.Salt,
-                Role = user.Role
+                UserID = user.UserID,
+                UserName = user.UserName,
+                UserLastName = user.UserLastName,
+                Role = user.Role,
             };
             if (!VerifyPassword(password, principal.Password, principal.Salt))
             {
                 throw new Exception("not found");
             }
-            return principal.Role;
-           
+            return mapper.Map<Principal>(principal);
 
-            
+
+
         }
         private Tuple<string, string> HashPassword(string password)
         {

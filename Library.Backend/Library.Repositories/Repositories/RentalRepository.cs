@@ -2,8 +2,11 @@
 using Library.Repositories.Entities;
 using Library.RepositoryContract.Entities;
 using Library.RepositoryContract.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 
@@ -19,15 +22,72 @@ namespace Library.Repositories.Repositories
             this.context = context;
             this.mapper = mapper;
         }
-        public List<Rental> GetAllRentals()
+        public List<Rental> GetAllRentals(Boolean completed)
         {
-            return mapper.Map<List<Rental>>(context.Rentals.ToList());
+            if (completed == true)
+            {
+                List<RentalWithDetails> result = RawSqlQuery("SELECT RentalID, r.BookID, BookName, r.DeliveryID, DeliveryCompanyName, r.UserID, UserName, UserLastName,  r.EmployeeID, EmployeeName, EmployeeLastName, RentalDate FROM Rentals r INNER JOIN Books b on r.BookID = b.BookID INNER JOIN DeliveryCompany d on d.DeliveryID = r.DeliveryID INNER JOIN Employee e on e.EmployeeID = r.EmployeeID INNER JOIN Users u on u.UserID = r.UserID where r.DeliveryID != 'e69f696d-a5eb-4502-85cb-52b1ac548de1' ",
+
+                x => new RentalWithDetails
+                {
+                    RentalID = (Guid)x[0],
+                    BookID = (Guid)x[1],
+                    BookName = (string)x[2],
+                    DeliveryID = (Guid)x[3],
+                    DeliveryCompanyName = (String)x[4],
+                    UserID = (Guid)x[5],
+                    UserName = (String)x[6] + " " + (String)x[7],
+                    EmployeeID = (Guid)x[8],
+                    EmployeeName = (String)x[9] + " " + (String)x[10],
+                    RentalDate = ((DateTime)x[11]).Date
+
+                }); ; ; ;
+
+                return mapper.Map<List<Rental>>(result);
+            }
+            else
+            {
+                List<RentalWithDetails> result = RawSqlQuery("SELECT RentalID, r.BookID, BookName, r.DeliveryID, DeliveryCompanyName, r.UserID, UserName, UserLastName,  r.EmployeeID, EmployeeName, EmployeeLastName, RentalDate FROM Rentals r INNER JOIN Books b on r.BookID = b.BookID INNER JOIN DeliveryCompany d on d.DeliveryID = r.DeliveryID INNER JOIN Employee e on e.EmployeeID = r.EmployeeID INNER JOIN Users u on u.UserID = r.UserID where r.DeliveryID = 'e69f696d-a5eb-4502-85cb-52b1ac548de1'",
+                                     x => new RentalWithDetails
+                     {
+                         RentalID = (Guid)x[0],
+                         BookID = (Guid)x[1],
+                         BookName = (string)x[2],
+                         DeliveryID = (Guid)x[3],
+                         DeliveryCompanyName = (String)x[4],
+                         UserID = (Guid)x[5],
+                         UserName = (String)x[6] + " " + (String)x[7],
+                         EmployeeID = (Guid)x[8],
+                         EmployeeName = (String)x[9] + " " + (String)x[10],
+                         RentalDate = ((DateTime)x[11]).Date
+
+                     }); ; ; ;
+
+                return mapper.Map<List<Rental>>(result);
+            }
+           // return mapper.Map<List<Rental>>(context.Rentals.ToList());
         }
 
-        public Rental GetRentalByID(Guid rentalID)
+        public List<Rental> GetRentalByID(Guid userID)
         {
-            var rental = context.Rentals.FirstOrDefault(e => e.RentalID == rentalID);
-            return mapper.Map<Rental>(rental);
+            String user_id = userID.ToString();
+            List<RentalWithDetails> result = RawSqlQuery("SELECT RentalID, r.BookID, BookName, r.DeliveryID, DeliveryCompanyName, r.UserID, UserName, UserLastName,  r.EmployeeID, EmployeeName, EmployeeLastName, RentalDate FROM Rentals r INNER JOIN Books b on r.BookID = b.BookID INNER JOIN DeliveryCompany d on d.DeliveryID = r.DeliveryID INNER JOIN Employee e on e.EmployeeID = r.EmployeeID INNER JOIN Users u on u.UserID = r.UserID where r.UserID =" + "'" + user_id + " '" ,
+                                     x => new RentalWithDetails
+                                     {
+                                         RentalID = (Guid)x[0],
+                                         BookID = (Guid)x[1],
+                                         BookName = (string)x[2],
+                                         DeliveryID = (Guid)x[3],
+                                         DeliveryCompanyName = (String)x[4],
+                                         UserID = (Guid)x[5],
+                                         UserName = (String)x[6] + " " + (String)x[7],
+                                         EmployeeID = (Guid)x[8],
+                                         EmployeeName = (String)x[9] + " " + (String)x[10],
+                                         RentalDate = ((DateTime)x[11]).Date
+
+                                     }); ; ; ;
+
+            return mapper.Map<List<Rental>>(result);
         }
         public Guid AddNewRental(Rental rental)
         {
@@ -35,7 +95,6 @@ namespace Library.Repositories.Repositories
             var guid = Guid.NewGuid();
             newRental.RentalID = guid;
             newRental.RentalDate = DateTime.Today;
-
             context.Rentals.Add(newRental);
             context.SaveChanges();
 
@@ -72,6 +131,31 @@ namespace Library.Repositories.Repositories
             context.SaveChanges();
             return true;
         }
+
+        public List<T> RawSqlQuery<T>(string query, Func<DbDataReader, T> map)
+        {
+            using (var command = context.Database.GetDbConnection().CreateCommand())
+            {
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+
+                context.Database.OpenConnection();
+
+                using (var result = command.ExecuteReader())
+                {
+                    var entities = new List<T>();
+
+                    while (result.Read())
+                    {
+                        entities.Add(map(result));
+                    }
+
+                    return entities;
+                }
+            }
+        }
+
+     
 
     }
 }

@@ -13,6 +13,8 @@ namespace Library.Repositories.Profiles
         {
             CreateMap<RentalDB, Rental>();
             CreateMap<Rental, RentalDB>();
+            CreateMap<Rental, RentalWithDetails>();
+            CreateMap<RentalWithDetails, Rental>();
         }
     }
 }

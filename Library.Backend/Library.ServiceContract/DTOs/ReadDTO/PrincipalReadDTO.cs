@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Library.Repositories.Entities
+namespace Library.ServiceContract.DTOs.ReadDTO
 {
-   public class PrincipalDB
+    public class PrincipalReadDTO
     {
         public String Email { get; set; }
         public String Password { get; set; }

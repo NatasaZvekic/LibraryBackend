@@ -61,6 +61,8 @@ namespace Library.Repositories.Repositories
             employeeOld.EmployeeLastName = employee.EmployeeLastName;
             employeeOld.EmployeeContact = employee.EmployeeContact;
             employeeOld.SSN = employee.SSN;
+            employeeOld.Role = employee.Role;
+            employeeOld.Email = employee.Email;
 
             context.SaveChanges();
         }

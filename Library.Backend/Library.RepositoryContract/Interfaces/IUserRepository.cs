@@ -12,7 +12,7 @@ namespace Library.RepositoryContract.Interfaces
         Guid AddNewUser(User user);
         void UpdateUser(User user, Guid userID);
         bool DeleteUser(Guid userID);
-        String UserWithCredentialsExists(string email, string password);
+        Principal UserWithCredentialsExists(string email, string password);
 
     }
 }

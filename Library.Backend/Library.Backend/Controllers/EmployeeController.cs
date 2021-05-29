@@ -65,7 +65,7 @@ namespace Library.Backend.Controllers
 
                 return NoContent();
             }
-            catch
+            catch (Exception e)
             {
                 return NotFound();
             }

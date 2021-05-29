@@ -1,4 +1,5 @@
 ﻿using Library.ServiceContract.DTOs.CreateDTO;
+using Library.ServiceContract.DTOs.ReadDTO;
 using Library.ServiceContract.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -22,12 +23,12 @@ namespace Library.Backend.Helpers
         }
 
 
-        public String AuthenticatePrincipal(PrincipalCreateDTO principal)
+        public PrincipalReadDTO AuthenticatePrincipal(PrincipalCreateDTO principal)
         {
             try
             {
-                var role = userService.UserWithCredentialsExists(principal.Email, principal.Password);
-                return role;
+                var prin = userService.UserWithCredentialsExists(principal.Email, principal.Password);
+                return prin;
             }
             catch (Exception)
             {
@@ -52,7 +53,9 @@ namespace Library.Backend.Helpers
                                              expires: DateTime.Now.AddMinutes(120),
                                              signingCredentials: credentials);
 
+
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
     }
 }

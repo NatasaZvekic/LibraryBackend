@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Library.RepositoryContract.Entities
+namespace Library.Repositories.Entities
 {
-    public class Rental
-    {
+    public class RentalWithDetails
+	{
 		[Key]
 		public Guid RentalID { get; set; }
 		public DateTime RentalDate { get; set; }

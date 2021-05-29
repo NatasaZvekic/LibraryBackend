@@ -28,11 +28,22 @@ namespace Library.Repositories.Repositories
         {
 
             List<BookWithAuthor> result =  RawSqlQuery("SELECT BookID, BookName, PublishYear, Url, Available, AuthorName, AuthorLastName, SupllierID, GenreID, a.AuthorID FROM Books b"
-                    + " INNER JOIN Author a on a.AuthorID = b.AuthorID",
-                    x => new BookWithAuthor { BookID= (Guid)x[0], BookName = (string)x[1], PublishYear = (int)x[2], Url = (String)x[3], Available = (int)x[4] , AuthorName = (String)x[5] ,
-                        AuthorLastName = (String)x[6], SupllierID = (Guid)x[7], GenreID = (Guid)x[8], AuthorID = (Guid)x[9] });
+                    + " INNER JOIN Author a on a.AuthorID = b.AuthorID where Available > 0",
+                    x => new BookWithAuthor { 
+                        BookID= (Guid)x[0], 
+                        BookName = (string)x[1], 
+                        PublishYear = (int)x[2], 
+                        Url = (String)x[3], 
+                        Available = (int)x[4] ,
+                        AuthorName = (String)x[5] ,
+                        AuthorLastName = (String)x[6],
+                        SupllierID = (Guid)x[7], 
+                        GenreID = (Guid)x[8], 
+                        AuthorID = (Guid)x[9] });
 
-             return mapper.Map<List<Book>>(result.Where(e => string.IsNullOrEmpty(bookName) || e.BookName.Contains(bookName)));
+            return mapper.Map<List<Book>>(result);
+
+         //   return mapper.Map<List<Book>>(result.Where(e => string.IsNullOrEmpty(bookName) || e.BookName.Contains(bookName)));
         }
         public Book GetBookByID(Guid bookID)
         {

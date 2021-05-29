@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "NV+fIcqqb1unaXFc/Ghof5WuMT/kLbIp1EDz+EIIykyahzeTw9i4PtFcq45oTpSe+7vBRMi3Dx+3fY4c0FrACw==",
+  "dgSpecHash": "j0AYkC7mLorpG0WMW3afJ029K18jpAvGvdIyFkz/duuD+euQPmLZVtKKBpPRqp4R0HGSoIaX6RZPYPjFxUiu7Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Hp\\Desktop\\Faks\\ERP\\Backend_ERP\\Library.Backend\\Library.ServiceContract\\Library.ServiceContract.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Hp\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.11.0\\microsoft.identitymodel.jsonwebtokens.6.11.0.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\microsoft.identitymodel.logging\\6.11.0\\microsoft.identitymodel.logging.6.11.0.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.11.0\\microsoft.identitymodel.tokens.6.11.0.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.11.0\\system.identitymodel.tokens.jwt.6.11.0.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512"
+  ],
   "logs": []
 }

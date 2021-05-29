@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Routing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Library.Backend.Controllers
@@ -26,9 +28,9 @@ namespace Library.Backend.Controllers
 
         [Authorize(Roles = "admin")]
         [HttpGet]
-        public ActionResult<List<RentalReadDTO>> GetAllRentals()
+        public ActionResult<List<RentalReadDTO>> GetAllRentals(Boolean completed)
         {
-            var rentals = rentalsService.GetAllRentals();
+            var rentals = rentalsService.GetAllRentals(completed);
             if (rentals == null)
             {
                 return NoContent();
@@ -36,11 +38,11 @@ namespace Library.Backend.Controllers
             return Ok(rentals);
         }
 
-        [Authorize(Roles = "admin")]
-        [HttpGet("{rentalID}")]
-        public ActionResult GetRentalByID(Guid rentalID)
+        [Authorize(Roles = "user")]
+        [HttpGet("{userID}")]
+        public ActionResult GetRentalByID(Guid userID)
         {
-            var rental = rentalsService.GetRentalByID(rentalID);
+            var rental = rentalsService.GetRentalByID(userID);
             if (rental == null)
             {
                 return NotFound();
@@ -52,10 +54,18 @@ namespace Library.Backend.Controllers
         [HttpPost]
         public ActionResult AddNewRental(RentalCreateDTO rental)
         {
-            var guid = rentalsService.AddNewRental(rental);
+            try
+            {
+                var guid = rentalsService.AddNewRental(rental);
 
-            string location = linkGenerator.GetPathByAction("GetRentalByID", "Rental", new { rentalID = guid });
-            return Created(location, guid);
+                string location = linkGenerator.GetPathByAction("GetRentalByID", "Rental", new { rentalID = guid });
+                return Created(location, guid);
+            }
+            catch (Exception ex)
+            {
+               // return StatusCode(500);
+                return StatusCode(400);
+            }
         }
 
         [Authorize(Roles = "admin")]
@@ -68,12 +78,11 @@ namespace Library.Backend.Controllers
 
                 return NoContent();
             }
-            catch
+            catch(Exception ex)
             {
                 return NotFound();
             }
         }
-
 
         [HttpDelete("{retalID}")]
         [Authorize(Roles = "admin, user")]

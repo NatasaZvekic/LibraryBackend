@@ -4,6 +4,6 @@ C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.ServiceContract
 C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.ServiceContract\obj\Debug\netcoreapp3.1\Library.ServiceContract.csprojAssemblyReference.cache
 C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.ServiceContract\obj\Debug\netcoreapp3.1\Library.ServiceContract.AssemblyInfoInputs.cache
 C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.ServiceContract\obj\Debug\netcoreapp3.1\Library.ServiceContract.AssemblyInfo.cs
-C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.ServiceContract\obj\Debug\netcoreapp3.1\Library.ServiceContract.csproj.CoreCompileInputs.cache
 C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.ServiceContract\obj\Debug\netcoreapp3.1\Library.ServiceContract.dll
 C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.ServiceContract\obj\Debug\netcoreapp3.1\Library.ServiceContract.pdb
+C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.ServiceContract\obj\Debug\netcoreapp3.1\Library.ServiceContract.csproj.CoreCompileInputs.cache

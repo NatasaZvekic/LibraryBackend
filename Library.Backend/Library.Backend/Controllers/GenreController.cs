@@ -2,6 +2,7 @@
 using Library.ServiceContract.DTOs.ReadDTO;
 using Library.ServiceContract.DTOs.UpdateDTO;
 using Library.ServiceContract.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using System;
@@ -13,6 +14,8 @@ namespace Library.Backend.Controllers
 {
     [ApiController]
     [Route("/genres")]
+    [Authorize(Roles = "admin")]
+
     public class GenreController : ControllerBase
     {
         private readonly IGenreService genreService;
@@ -22,6 +25,7 @@ namespace Library.Backend.Controllers
             this.genreService = genreService;
             this.linkGenerator = linkGenerator;
         }
+
 
         [HttpGet]
         public ActionResult<List<GenreReadDTO>> GetAllGenres()
@@ -55,7 +59,7 @@ namespace Library.Backend.Controllers
         }
 
         [HttpPut("{genreID}")]
-        public IActionResult UpdateGenre(GenreUpdateDTO genre, Guid genreID)
+        public IActionResult UpdateGenre([FromBody] GenreUpdateDTO genre, Guid genreID)
         {
             try
             {

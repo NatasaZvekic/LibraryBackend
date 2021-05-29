@@ -52,7 +52,7 @@ namespace Library.Repositories.Repositories
             }
 
             oldSupplier.SupplierAddress = supplier.SupplierAddress;
-            oldSupplier.SupplierAddress = supplier.SupplierAddress;
+            oldSupplier.SupplierContant = supplier.SupplierContant;
             oldSupplier.CompanyName = supplier.CompanyName;
 
             context.SaveChanges();

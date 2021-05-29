@@ -31,16 +31,28 @@ namespace Library.Backend.Controllers
         {
 
             var books = bookService.GetAllBooks(bookName);
-            if (bookName != null) { pageNumber = 0; }
-            
-            var content = new { BooksList = books.Skip(5 * (pageNumber - 1)).Take(5), NumberOfPages = (int)Math.Round((Decimal)books.Count / 5, 0, MidpointRounding.ToPositiveInfinity) };
-           
-
-            if (books == null)
+            var boo = books.Where(e => e.BookName.Contains(bookName));
+            if (bookName != null)
             {
-                return NoContent();
+                pageNumber = 0;
+                var content = new { BooksList = boo.Skip(5 * (pageNumber - 1)).Take(5), NumberOfPages = (int)Math.Round((Decimal)books.Count / 5, 0, MidpointRounding.ToPositiveInfinity) };
+                if (books == null)
+                {
+                    return NoContent();
+                }
+                return Ok(content);
             }
-            return Ok(content);
+            else
+            {
+                var content = new { BooksList = books.Skip(5 * (pageNumber - 1)).Take(5), NumberOfPages = (int)Math.Round((Decimal)books.Count / 5, 0, MidpointRounding.ToPositiveInfinity) };
+                if (books == null)
+                {
+                    return NoContent();
+                }
+                return Ok(content);
+            }
+
+           
         }
 
         [HttpGet("{bookID}")]
@@ -58,10 +70,13 @@ namespace Library.Backend.Controllers
         [Authorize(Roles = "admin")]
         public IActionResult AddNewBook(BookCreateDTO book)
         {
-            var guid = bookService.AddNewBook(book);
+          
+                var guid = bookService.AddNewBook(book);
 
-            string location = linkGenerator.GetPathByAction("GetBookByID", "Book", new { bookID = guid });
-            return Created(location, guid);
+                string location = linkGenerator.GetPathByAction("GetBookByID", "Book", new { bookID = guid });
+                return Created(location, guid);
+            
+           
         }
 
         [HttpPut("{bookID}")]

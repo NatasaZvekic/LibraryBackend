@@ -14,5 +14,5 @@ namespace Library.Repositories.Entities
 		public Guid UserID {get;set; }
 		public Guid EmployeeID { get; set; }
 		public Guid DeliveryID { get; set; }
-	}
+		}
 }

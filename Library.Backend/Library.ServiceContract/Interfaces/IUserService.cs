@@ -14,6 +14,6 @@ namespace Library.ServiceContract.Interfaces
         Guid AddNewUser(UserCreateDTO user);
         void UpdateUser(UserUpdateDTO user, Guid userID);
         bool DeleteUser(Guid userID);
-        String UserWithCredentialsExists(string email, string password);
+        PrincipalReadDTO UserWithCredentialsExists(string email, string password);
     }
 }
