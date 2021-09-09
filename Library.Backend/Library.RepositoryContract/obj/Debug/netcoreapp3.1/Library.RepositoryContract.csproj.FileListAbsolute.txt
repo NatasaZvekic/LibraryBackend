@@ -10,3 +10,15 @@ C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.RepositoryContr
 C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.RepositoryContract\obj\Debug\netcoreapp3.1\Library.RepositoryContract.csproj.CopyComplete
 C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.RepositoryContract\obj\Debug\netcoreapp3.1\Library.RepositoryContract.dll
 C:\Users\Hp\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.RepositoryContract\obj\Debug\netcoreapp3.1\Library.RepositoryContract.pdb
+C:\Users\Nataša\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.RepositoryContract\bin\Debug\netcoreapp3.1\Library.RepositoryContract.deps.json
+C:\Users\Nataša\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.RepositoryContract\bin\Debug\netcoreapp3.1\Library.RepositoryContract.dll
+C:\Users\Nataša\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.RepositoryContract\bin\Debug\netcoreapp3.1\Library.RepositoryContract.pdb
+C:\Users\Nataša\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.RepositoryContract\bin\Debug\netcoreapp3.1\Library.ServiceContract.dll
+C:\Users\Nataša\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.RepositoryContract\bin\Debug\netcoreapp3.1\Library.ServiceContract.pdb
+C:\Users\Nataša\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.RepositoryContract\obj\Debug\netcoreapp3.1\Library.RepositoryContract.csproj.AssemblyReference.cache
+C:\Users\Nataša\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.RepositoryContract\obj\Debug\netcoreapp3.1\Library.RepositoryContract.AssemblyInfoInputs.cache
+C:\Users\Nataša\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.RepositoryContract\obj\Debug\netcoreapp3.1\Library.RepositoryContract.AssemblyInfo.cs
+C:\Users\Nataša\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.RepositoryContract\obj\Debug\netcoreapp3.1\Library.RepositoryContract.csproj.CoreCompileInputs.cache
+C:\Users\Nataša\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.RepositoryContract\obj\Debug\netcoreapp3.1\Library.RepositoryContract.csproj.CopyComplete
+C:\Users\Nataša\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.RepositoryContract\obj\Debug\netcoreapp3.1\Library.RepositoryContract.dll
+C:\Users\Nataša\Desktop\Faks\ERP\Backend_ERP\Library.Backend\Library.RepositoryContract\obj\Debug\netcoreapp3.1\Library.RepositoryContract.pdb

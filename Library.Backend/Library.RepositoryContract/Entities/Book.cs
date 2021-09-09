@@ -19,5 +19,7 @@ namespace Library.RepositoryContract.Entities
 		public String AuthorName { get; set; }
 		public String AuthorLastName { get; set; }
 		public int YearOfBirth { get; set; }
+		public int Price { get; set; }
+
 	}
 }

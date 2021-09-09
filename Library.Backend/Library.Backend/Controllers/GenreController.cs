@@ -76,14 +76,21 @@ namespace Library.Backend.Controllers
         [HttpDelete("{genreID}")]
         public IActionResult DeleteGenre(Guid genreID)
         {
-            bool deleted = genreService.DeleteGenre(genreID);
-
-            if (deleted == false)
+            try
             {
-                return NotFound();
-            }
+                bool deleted = genreService.DeleteGenre(genreID);
 
-            return NoContent();
+                if (deleted == false)
+                {
+                    return NotFound();
+                }
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
         }
     }
 }

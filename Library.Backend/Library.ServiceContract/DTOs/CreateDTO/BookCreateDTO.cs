@@ -13,5 +13,6 @@ namespace Library.ServiceContract.DTOs.CreateDTO
 		public Guid GenreID { get; set; }
 		public Guid SupllierID { get; set; }
 		public String Url { get; set; }
+		public int Price { get; set; }
 	}
 }

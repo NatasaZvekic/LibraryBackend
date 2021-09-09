@@ -37,7 +37,7 @@ namespace Library.Backend.Controllers
         }
 
         [HttpGet("{userID}")]
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin, user")]
         public ActionResult GetUserByID(Guid userID)
         {
             var user = userService.GetUserByID(userID);
@@ -74,7 +74,7 @@ namespace Library.Backend.Controllers
 
                 return NoContent();
             }
-            catch
+            catch (Exception ex)
             {
                 return NotFound();
             }
@@ -85,14 +85,21 @@ namespace Library.Backend.Controllers
         [Authorize(Roles = "admin, user")]
         public IActionResult DeleteUser(Guid userID)
         {
-            bool deleted = userService.DeleteUser(userID);
-
-            if (deleted)
+            try
             {
-                return NoContent();
-            }
+                bool deleted = userService.DeleteUser(userID);
 
-            return NotFound();
+                if (deleted)
+                {
+                    return NoContent();
+                }
+
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
         }
     }
 }

@@ -1,6 +1,13 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Library.Backend",
+    "\\Library.Backend\\Library.Backend",
+    "\\Library.Backend\\Library.Backend\\Controllers",
+    "\\Library.Backend\\Library.Services",
+    "\\Library.Backend\\Library.Services\\Profiles",
+    "\\Library.Backend\\Library.Services\\Services"
   ],
+  "SelectedNode": "\\Library.Backend\\Library.Backend\\Controllers\\GenreController.cs",
   "PreviewInSolutionExplorer": false
 }

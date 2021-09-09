@@ -27,7 +27,7 @@ namespace Library.Repositories.Repositories
         public List<Book> GetAllBooks( String bookName = null)
         {
 
-            List<BookWithAuthor> result =  RawSqlQuery("SELECT BookID, BookName, PublishYear, Url, Available, AuthorName, AuthorLastName, SupllierID, GenreID, a.AuthorID FROM Books b"
+            List<BookWithAuthor> result =  RawSqlQuery("SELECT BookID, BookName, PublishYear, Url, Available, AuthorName, AuthorLastName, SupllierID, GenreID, a.AuthorID, Price FROM Books b"
                     + " INNER JOIN Author a on a.AuthorID = b.AuthorID where Available > 0",
                     x => new BookWithAuthor { 
                         BookID= (Guid)x[0], 
@@ -39,7 +39,9 @@ namespace Library.Repositories.Repositories
                         AuthorLastName = (String)x[6],
                         SupllierID = (Guid)x[7], 
                         GenreID = (Guid)x[8], 
-                        AuthorID = (Guid)x[9] });
+                        AuthorID = (Guid)x[9],
+                        Price = (int)x[10]});
+           
 
             return mapper.Map<List<Book>>(result);
 
@@ -79,6 +81,7 @@ namespace Library.Repositories.Repositories
             oldBook.PublishYear = book.PublishYear;
             oldBook.SupllierID = book.SupllierID;
             oldBook.Url = book.Url;
+            oldBook.Price = book.Price;
 
             context.SaveChanges();
         }

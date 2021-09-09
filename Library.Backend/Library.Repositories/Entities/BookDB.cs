@@ -17,5 +17,7 @@ namespace Library.Repositories.Entities
 		public Guid SupllierID { get; set; }
 		public String Url { get; set; }
 
+		public int Price { get; set; }
+
 	}
 }

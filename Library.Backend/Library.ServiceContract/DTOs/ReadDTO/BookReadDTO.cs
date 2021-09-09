@@ -18,5 +18,7 @@ namespace Library.ServiceContract.DTOs.ReadDTO
 		public String Url { get; set; }
 		public String AuthorName { get; set; }
 		public String AuthorLastName { get; set; }
+		public int Price { get; set; }
+
 	}
 }

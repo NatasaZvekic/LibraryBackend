@@ -14,7 +14,7 @@ namespace Library.Backend.Controllers
 {
     [ApiController]
     [Route("employees")]
-    [Authorize(Roles = "admin")]
+   
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeService service;
@@ -74,14 +74,21 @@ namespace Library.Backend.Controllers
         [HttpDelete("{employeeID}")]
         public IActionResult DeleteEmployee(Guid employeeID)
         {
-            bool deleted = service.DeleteEmployee(employeeID);
-            
-            if(deleted == false)
+            try
             {
-                return NotFound();
-            }
+                bool deleted = service.DeleteEmployee(employeeID);
 
-            return NoContent();
+                if (deleted == false)
+                {
+                    return NotFound();
+                }
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
         }
     }
 }

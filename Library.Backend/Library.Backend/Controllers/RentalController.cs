@@ -74,6 +74,7 @@ namespace Library.Backend.Controllers
         {
             try
             {
+               
                 rentalsService.UpdateRental(rental, rentalID);
 
                 return NoContent();

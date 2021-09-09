@@ -66,7 +66,7 @@ namespace Library.Repositories.Repositories
             oldUser.UserName = user.UserName;
             oldUser.UserLastName = user.UserLastName;
             oldUser.UserAddress = user.UserAddress;
-            oldUser.Email= user.Email;
+            oldUser.Name= user.Name;
             oldUser.Role = user.Role;
             oldUser.UserContact = user.UserContact;
 
@@ -89,7 +89,7 @@ namespace Library.Repositories.Repositories
        
         public Principal UserWithCredentialsExists(string email, string password)
         {
-            var user = context.Users.FirstOrDefault(u => u.Email == email);
+            var user = context.Users.FirstOrDefault(u => u.UserName == email);
             if (user == null)
             {
                 var employee = context.Employee.FirstOrDefault(e => e.Email == email);
@@ -119,11 +119,11 @@ namespace Library.Repositories.Repositories
 
             PrincipalDB principal = new PrincipalDB
             {
-                Email = user.Email,
+                Email = user.UserName,
                 Password = user.Password,
                 Salt = user.Salt,
                 UserID = user.UserID,
-                UserName = user.UserName,
+                UserName = user.Name,
                 UserLastName = user.UserLastName,
                 Role = user.Role,
             };

@@ -99,14 +99,21 @@ namespace Library.Backend.Controllers
         [Authorize(Roles = "admin")]
         public IActionResult DeleteBook(Guid bookID)
         {
-            bool deleted = bookService.DeleteBook(bookID);
-
-            if (deleted == false)
+            try
             {
-                return NotFound();
-            }
+                bool deleted = bookService.DeleteBook(bookID);
 
-            return NoContent();
+                if (deleted == false)
+                {
+                    return NotFound();
+                }
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
         }
 
     }

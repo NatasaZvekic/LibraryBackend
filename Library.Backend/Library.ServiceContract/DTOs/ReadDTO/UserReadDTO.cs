@@ -13,7 +13,7 @@ namespace Library.ServiceContract.DTOs.ReadDTO
         public String UserLastName { get; set; }
         public String UserAddress { get; set; }
         public int UserContact { get; set; }
-        public String Email { get; set; }
+        public String Name { get; set; }
         public String Role { get; set; }
 
     }

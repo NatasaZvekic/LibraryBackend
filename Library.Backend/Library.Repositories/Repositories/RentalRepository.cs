@@ -26,7 +26,7 @@ namespace Library.Repositories.Repositories
         {
             if (completed == true)
             {
-                List<RentalWithDetails> result = RawSqlQuery("SELECT RentalID, r.BookID, BookName, r.DeliveryID, DeliveryCompanyName, r.UserID, UserName, UserLastName,  r.EmployeeID, EmployeeName, EmployeeLastName, RentalDate FROM Rentals r INNER JOIN Books b on r.BookID = b.BookID INNER JOIN DeliveryCompany d on d.DeliveryID = r.DeliveryID INNER JOIN Employee e on e.EmployeeID = r.EmployeeID INNER JOIN Users u on u.UserID = r.UserID where r.DeliveryID != 'e69f696d-a5eb-4502-85cb-52b1ac548de1' ",
+                List<RentalWithDetails> result = RawSqlQuery("SELECT RentalID, r.BookID, BookName, r.DeliveryID, DeliveryCompanyName, r.UserID, Name, UserLastName,  r.EmployeeID, EmployeeName, EmployeeLastName, RentalDate FROM Rentals r INNER JOIN Books b on r.BookID = b.BookID INNER JOIN DeliveryCompany d on d.DeliveryID = r.DeliveryID INNER JOIN Employee e on e.EmployeeID = r.EmployeeID INNER JOIN Users u on u.UserID = r.UserID where r.DeliveryID != 'e69f696d-a5eb-4502-85cb-52b1ac548de1' ",
 
                 x => new RentalWithDetails
                 {
@@ -47,7 +47,7 @@ namespace Library.Repositories.Repositories
             }
             else
             {
-                List<RentalWithDetails> result = RawSqlQuery("SELECT RentalID, r.BookID, BookName, r.DeliveryID, DeliveryCompanyName, r.UserID, UserName, UserLastName,  r.EmployeeID, EmployeeName, EmployeeLastName, RentalDate FROM Rentals r INNER JOIN Books b on r.BookID = b.BookID INNER JOIN DeliveryCompany d on d.DeliveryID = r.DeliveryID INNER JOIN Employee e on e.EmployeeID = r.EmployeeID INNER JOIN Users u on u.UserID = r.UserID where r.DeliveryID = 'e69f696d-a5eb-4502-85cb-52b1ac548de1'",
+                List<RentalWithDetails> result = RawSqlQuery("SELECT RentalID, r.BookID, BookName, r.DeliveryID, DeliveryCompanyName, r.UserID, Name, UserLastName,  r.EmployeeID, EmployeeName, EmployeeLastName, RentalDate FROM Rentals r INNER JOIN Books b on r.BookID = b.BookID INNER JOIN DeliveryCompany d on d.DeliveryID = r.DeliveryID INNER JOIN Employee e on e.EmployeeID = r.EmployeeID INNER JOIN Users u on u.UserID = r.UserID where r.DeliveryID = 'e69f696d-a5eb-4502-85cb-52b1ac548de1'",
                                      x => new RentalWithDetails
                      {
                          RentalID = (Guid)x[0],
@@ -115,7 +115,7 @@ namespace Library.Repositories.Repositories
             oldRental.EmployeeID = rental.EmployeeID;
             oldRental.UserID = rental.UserID;
             oldRental.RentalDate = rental.RentalDate;
-
+            oldRental.RentalDate = DateTime.Today;
 
             context.SaveChanges();
         }

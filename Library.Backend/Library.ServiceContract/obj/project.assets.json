@@ -291,19 +291,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Hp\\.nuget\\packages\\": {}
+    "C:\\Users\\Nataša\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Hp\\Desktop\\Faks\\ERP\\Backend_ERP\\Library.Backend\\Library.ServiceContract\\Library.ServiceContract.csproj",
+      "projectUniqueName": "C:\\Users\\Nataša\\Desktop\\Faks\\ERP\\Backend_ERP\\Library.Backend\\Library.ServiceContract\\Library.ServiceContract.csproj",
       "projectName": "Library.ServiceContract",
-      "projectPath": "C:\\Users\\Hp\\Desktop\\Faks\\ERP\\Backend_ERP\\Library.Backend\\Library.ServiceContract\\Library.ServiceContract.csproj",
-      "packagesPath": "C:\\Users\\Hp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Hp\\Desktop\\Faks\\ERP\\Backend_ERP\\Library.Backend\\Library.ServiceContract\\obj\\",
+      "projectPath": "C:\\Users\\Nataša\\Desktop\\Faks\\ERP\\Backend_ERP\\Library.Backend\\Library.ServiceContract\\Library.ServiceContract.csproj",
+      "packagesPath": "C:\\Users\\Nataša\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Nataša\\Desktop\\Faks\\ERP\\Backend_ERP\\Library.Backend\\Library.ServiceContract\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Nataša\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -311,11 +311,11 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://packagesource": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -327,6 +327,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "System.IdentityModel.Tokens.Jwt": {
             "target": "Package",
@@ -348,7 +349,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

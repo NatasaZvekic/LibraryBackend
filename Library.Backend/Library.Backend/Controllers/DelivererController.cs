@@ -74,14 +74,21 @@ namespace Library.Backend.Controllers
         [HttpDelete("{delivererID}")]
         public IActionResult DeleteEmployee(Guid delivererID)
         {
-            bool deleted = delivererService.DeleteDelivrer(delivererID);
-
-            if (deleted == false)
+            try
             {
-                return NotFound();
-            }
+                bool deleted = delivererService.DeleteDelivrer(delivererID);
 
-            return NoContent();
+                if (deleted == false)
+                {
+                    return NotFound();
+                }
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
         }
     }
 }

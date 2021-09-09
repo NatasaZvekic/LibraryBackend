@@ -77,14 +77,21 @@ namespace Library.Backend.Controllers
         [HttpDelete("{authorID}")]
         public IActionResult DeleteAuthor(Guid authorID)
         {
-            bool deleted = authorService.DeleteAuthor(authorID);
-
-            if (deleted)
+            try
             {
-                return NoContent();
-            }
+                bool deleted = authorService.DeleteAuthor(authorID);
 
-            return NotFound();
+                if (deleted)
+                {
+                    return NoContent();
+                }
+
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
         }
     }
 }

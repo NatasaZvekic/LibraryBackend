@@ -74,14 +74,21 @@ namespace Library.Backend.Controllers
         [HttpDelete("{supplierID}")]
         public IActionResult Deletesupplier(Guid supplierID)
         {
-            bool deleted = supplierService.DeleteSupplier(supplierID);
-
-            if (deleted)
+            try
             {
-                return NoContent();
-            }
+                bool deleted = supplierService.DeleteSupplier(supplierID);
 
-            return NotFound();
+                if (deleted)
+                {
+                    return NoContent();
+                }
+                return NotFound();
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
         }
     }
 }
